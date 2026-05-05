@@ -1,8 +1,12 @@
 import './style.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { inject } from '@vercel/analytics';
 
 gsap.registerPlugin(ScrollTrigger);
+
+// Initialize Vercel Web Analytics
+inject();
 
 // ===== Mobile Menu =====
 function initMobileMenu() {
