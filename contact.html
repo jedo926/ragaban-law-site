@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Ragaban & Nasseef</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Inter:wght@100..300..400..600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app">
+      <!-- Ambient Background Animations -->
+      <div class="ambient-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="navbar" id="navbar">
+        <a href="/" class="nav-brand">RN & Co</a>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="/services.html">Services</a>
+          <a href="/team.html">Our Team</a>
+          <a href="/contact.html" class="active">Contact</a>
+        </div>
+      </nav>
+
+      <div class="content-wrapper">
+        <section class="contact-section" id="contact">
+          <div class="container">
+            <div class="page-header">
+              <h1 class="section-title text-center">Contact Us</h1>
+              <div class="divider center-divider"></div>
+            </div>
+            
+            <div class="contact-grid">
+
+              <div class="glass-card" style="padding: 3rem;">
+                <h2 class="form-title">Reach Out</h2>
+                <p class="section-text mb-4">We invite you to reach out to discuss your legal needs with our expert advisory team.</p>
+                
+                <div class="contact-info-list">
+                  <div class="contact-item">
+                    <span class="contact-label">Location</span>
+                    <span class="contact-value">Al Rawdah District<br>Jeddah, Kingdom of Saudi Arabia</span>
+                  </div>
+                  <div class="contact-item">
+                    <span class="contact-label">Phone</span>
+                    <span class="contact-value">+966 56 322 0932</span>
+                  </div>
+                  <div class="contact-item">
+                    <span class="contact-label">Email</span>
+                    <span class="contact-value">contact@rn-law.com</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-container glass-card">
+                <form class="contact-form">
+                  <h3 class="form-title">Request Consultation</h3>
+                  <input type="text" placeholder="Full Name" required />
+                  <input type="email" placeholder="Email Address" required />
+                  <textarea placeholder="How can we assist you?" rows="4" required></textarea>
+                  <button type="submit" class="cta-button">Submit Inquiry</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
