@@ -22,12 +22,15 @@
       <!-- Navigation -->
       <nav class="navbar" id="navbar">
         <a href="/" class="nav-brand">RN & Co</a>
-        <div class="nav-links">
+        <div class="nav-links" id="nav-links">
           <a href="/">Home</a>
           <a href="/services.html">Services</a>
           <a href="/team.html">Our Team</a>
           <a href="/contact.html" class="active">Contact</a>
         </div>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
       </nav>
 
       <div class="content-wrapper">
@@ -38,8 +41,7 @@
               <div class="divider center-divider"></div>
             </div>
             
-            <div class="contact-grid">
-
+            <div class="contact-single">
               <div class="glass-card" style="padding: 3rem;">
                 <h2 class="form-title">Reach Out</h2>
                 <p class="section-text mb-4">We invite you to reach out to discuss your legal needs with our expert advisory team.</p>
@@ -51,23 +53,9 @@
                   </div>
                   <div class="contact-item">
                     <span class="contact-label">Phone</span>
-                    <span class="contact-value">+966 56 322 0932</span>
-                  </div>
-                  <div class="contact-item">
-                    <span class="contact-label">Email</span>
-                    <span class="contact-value">contact@rn-law.com</span>
+                    <span class="contact-value"><a href="tel:+966563220932" class="contact-link">+966 56 322 0932</a></span>
                   </div>
                 </div>
-              </div>
-
-              <div class="form-container glass-card">
-                <form class="contact-form">
-                  <h3 class="form-title">Request Consultation</h3>
-                  <input type="text" placeholder="Full Name" required />
-                  <input type="email" placeholder="Email Address" required />
-                  <textarea placeholder="How can we assist you?" rows="4" required></textarea>
-                  <button type="submit" class="cta-button">Submit Inquiry</button>
-                </form>
               </div>
             </div>
           </div>

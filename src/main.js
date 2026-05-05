@@ -4,6 +4,43 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+// ===== Mobile Menu =====
+function initMobileMenu() {
+  const hamburger = document.getElementById('hamburger');
+  if (!hamburger) return;
+
+  // Create overlay if it doesn't exist
+  let overlay = document.getElementById('mobile-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'mobile-overlay';
+    overlay.className = 'mobile-overlay';
+    overlay.innerHTML = `
+      <a href="/">Home</a>
+      <a href="/services.html">Services</a>
+      <a href="/team.html">Our Team</a>
+      <a href="/contact.html">Contact</a>
+    `;
+    document.body.appendChild(overlay);
+  }
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.classList.toggle('open');
+    overlay.classList.toggle('visible', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  // Close on link click
+  overlay.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      overlay.classList.remove('visible');
+      document.body.style.overflow = '';
+    });
+  });
+}
+initMobileMenu();
+
 // Navbar scroll effect
 const navbar = document.getElementById('navbar');
 if (navbar) {
@@ -58,9 +95,10 @@ if (pinnedHeroElement) {
     });
 
     // Shrink and move the logo layer UP
+    const isMobile = window.innerWidth <= 768;
     tl.to('#animated-logo-layer', {
-      scale: 0.4,
-      y: '-35vh',
+      scale: isMobile ? 0.3 : 0.4,
+      y: isMobile ? '-40vh' : '-35vh',
       duration: 1.5,
       ease: 'power3.inOut'
     }, 0);
@@ -102,30 +140,20 @@ if (pinnedHeroElement) {
 // 2. About Section Reveal
 const aboutElement = document.getElementById('about');
 if (aboutElement) {
-  gsap.to('.abstract-shape', {
-    scrollTrigger: {
-      trigger: '#about',
-      start: 'top bottom',
-      end: 'bottom top',
-      scrub: 1,
-    },
-    y: -100,
-    ease: 'none'
-  });
-
-  gsap.set('.about-text-content, .about-visual', { opacity: 0, y: 50 });
-  
-  gsap.to(['.about-text-content', '.about-visual'], {
-    scrollTrigger: {
-      trigger: '#about',
-      start: 'top 75%',
-    },
-    opacity: 1,
-    y: 0,
-    stagger: 0.2,
-    duration: 1,
-    ease: 'power3.out'
-  });
+  const aboutTarget = document.querySelector('.about-single') || document.querySelector('.about-text-content');
+  if (aboutTarget) {
+    gsap.set(aboutTarget, { opacity: 0, y: 50 });
+    gsap.to(aboutTarget, {
+      scrollTrigger: {
+        trigger: '#about',
+        start: 'top 75%',
+      },
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: 'power3.out'
+    });
+  }
 }
 
 // 3. Services Section
@@ -193,27 +221,17 @@ if (teamElement) {
 // 5. Contact Section
 const contactElement = document.getElementById('contact');
 if (contactElement) {
-  gsap.set('.contact-grid > div', { opacity: 0, x: -30 });
-  gsap.set('.form-container', { opacity: 0, x: 30 });
+  const contactCards = document.querySelectorAll('.contact-grid > div, .contact-single > div');
+  gsap.set(contactCards, { opacity: 0, y: 30 });
 
-  gsap.to('.contact-grid > div', {
+  gsap.to(contactCards, {
     scrollTrigger: {
       trigger: '#contact',
       start: 'top 75%',
     },
     opacity: 1,
-    x: 0,
-    duration: 1,
-    ease: 'power3.out'
-  });
-
-  gsap.to('.form-container', {
-    scrollTrigger: {
-      trigger: '#contact',
-      start: 'top 75%',
-    },
-    opacity: 1,
-    x: 0,
+    y: 0,
+    stagger: 0.15,
     duration: 1,
     ease: 'power3.out'
   });
