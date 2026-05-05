@@ -614,6 +614,7 @@ body, html {
   display: grid;
   gap: 2rem;
   margin-bottom: 2rem;
+  justify-content: center;
 }
 
 .founders-grid {
